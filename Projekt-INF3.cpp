@@ -10,18 +10,34 @@ int main()
     cout << "Vyber si cislo a stiskni libovolne tlacitko pro pokracovani. \n" ;
     cin;
 
-    for (int i = 500; i = g ; i = i/2)
+    for (int i = 500; i = 1000 ; i = g)
     {
-        cout << "Je tvoje cislo vetsi nez" << i << "?" << endl;
 
+        cout << "Je tvoje cislo vetsi nez" << i << "?" << endl;
         cin >> answer;
+
         if (answer == "ne")
         {
-            g = i / 2;
+            cout << "Je tve cislo rovno" << i << "? \n";
+            cin >> answer;
+
+            if (answer == "ano")
+            {
+                cout << "Tvoje cislo je" << i << ". \n";
+            }
+            if (answer == "ne")
+            {
+                g = i - (i / 6);
+            }
+            else
+            {
+                cout << "Prosim odpovidejte ve tvaru ano/ne.\n";
+                break;
+            }
         }
         else if (answer == "ano")
         {
-            g = i + i / 2;
+            g = (1000 - i)/2 + i;
         }
 
         else
