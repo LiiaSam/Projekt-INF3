@@ -5,53 +5,48 @@ using namespace std;
 int main()
 {
     string answer; 
-    int g;
+    int g = 1000;
 
     cout << "Vyber si cislo a stiskni libovolne tlacitko pro pokracovani. \n" ;
     cin;
+    int a[1000];
+    for (int i = 0; i < 1000; i++)
+    {
+        a[i] = i;
+    }
 
-    for (int i = 500; i = 1000 ; i = g)
+    int chall = 1000;
+    int prev = 0;
+
+    for (int i = 500; i < 1000; i=chall)
     {
 
-        cout << "Je tvoje cislo vetsi nez" << i << "?" << endl;
+        cout << "Je tvoje cislo vetsi nez" << i << endl;
         cin >> answer;
+
+        int arraynum = 0;
+        int end = 1001;
+
 
         if (answer == "ne")
         {
-            cout << "Je tve cislo rovno" << i << "? \n";
-            cin >> answer;
-
-            if (answer == "ano")
+            for (int e = prev; e < end; e++)
             {
-                cout << "Tvoje cislo je" << i << ". \n";
-            }
-            if (answer == "ne")
-            {
-                g = i - (i / 6);
-            }
-            else
-            {
-                cout << "Prosim odpovidejte ve tvaru ano/ne.\n";
-                break;
+                a[arraynum] = e;
+                arraynum++;
             }
         }
         else if (answer == "ano")
         {
-            g = (1000 - i)/2 + i;
-        }
 
+        }
         else
         {
-            cout << "Prosim odpovidejte ve tvaru ano/ne. Hra se restartuje. \n";
+
         }
 
-        if (i == g)
-        {
-            cout << "tvoje cislo je" << i << ". \n";
-        }
+        prev = i;
     }
-
-
 
     return 0;
 }
