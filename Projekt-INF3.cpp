@@ -3,7 +3,7 @@
 #include <time.h>  
 using namespace std;
 
-void PCG()
+void PCGuesser()
 {
     string answer;
     int g = 1000;
@@ -12,12 +12,12 @@ void PCG()
     int prevmax = 1000;
     int prevmin = 1;
 
-    cout << "Vyber si cislo a stiskni libovolne tlacitko pro pokracovani. \n";
+    cout << "Vyberte si cislo a stisknete libovolne tlacitko pro pokracovani. \n";
     system("pause");
 
     for (int i = 500; i < 1002; i = mid)
     {
-        cout << "Je tvoje cislo vetsi nez " << i << endl;
+        cout << "Je vase cislo vetsi nez " << i << endl;
 
         while (answer != "ano" && answer != "ne")
         {
@@ -59,11 +59,11 @@ void PCG()
     }
 }
 
-void PLG()
+void HumanGuesser()
 {
     srand(unsigned(time(0)));
     int num = rand() % 1000;
-    int quest = 0;
+    int question = 0;
     int i = 2;
 
     cout << "Myslim si cislo... \n";
@@ -74,22 +74,22 @@ void PLG()
 
         cout << "Napiste cislo, se kterym chcete srovnavat. \n";
 
-        while (guess > 1000)
+        while (guess > 1000) 
         {
             cout << "Cislo musi byt mezi 1 a 1000. \n";
             cin >> guess;
         }
 
         cout << "Vyberte si, na co se chcete zeptat: \n1 Je vase cislo vetsi nez " << guess << "? \n2 Je vase cislo mensi nez " << guess << "? \n3 Je vase cislo rovno " << guess << "? \n";
-        cin >> quest;
+        cin >> question;
 
-        while (quest != 1 && quest != 2 && quest != 3)
+        while (question != 1 && question != 2 && question != 3)
         {
-            cout << "Napiste cislo 1 - 3, podle otazky, na ktero use chcete zeptat.";
-            cin >> quest;
+            cout << "Napiste cislo 1 - 3, podle otazky, na kterou se chcete zeptat.";
+            cin >> question;
         }
 
-        switch (quest)
+        switch (question)
         {
         case 1:
             if (num > guess)
@@ -136,11 +136,11 @@ int main()
    
     if (answ == "robot")
     {
-        PLG();
+        HumanGuesser();
     }
     else if (answ == "clovek")
     {
-        PCG();
+        PCGuesser();
     }
     else
     {
@@ -149,6 +149,3 @@ int main()
 
     return 0;
 }
-
-
-//vemte zdrojový kod a zkompirujte kompilátorem za pomocí g++ program.cpp -o program
