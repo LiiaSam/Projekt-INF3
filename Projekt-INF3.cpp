@@ -8,45 +8,63 @@ int main()
     int g = 1000;
 
     cout << "Vyber si cislo a stiskni libovolne tlacitko pro pokracovani. \n" ;
-    cin;
-    int a[1000];
+
+    int a[999];
     for (int i = 0; i < 1000; i++)
     {
         a[i] = i;
     }
 
-    int chall = 1000;
-    int prev = 0;
+    int mid = 500;
+    int prevmax = 1000;
+    int prevmin = 1;
 
-    for (int i = 500; i < 1000; i=chall)
+    for (int i = 500; i < 1001; i=mid)
     {
+        cout << "Je tvoje cislo vetsi nez " << i << endl;
+        cin >> answer; 
 
-        cout << "Je tvoje cislo vetsi nez" << i << endl;
-        cin >> answer;
-
-        int arraynum = 0;
-        int end = 1001;
-
+        int arraynum = -1;
 
         if (answer == "ne")
         {
-            for (int e = prev; e < end; e++)
+            for (int e = prevmin; e < i+1; e++)
             {
-                a[arraynum] = e;
                 arraynum++;
+                a[arraynum] = e;
             }
         }
         else if (answer == "ano")
         {
-
+            for (int e = mid + 1; e < prevmax + 1; e++)
+            {
+                arraynum++;
+                a[arraynum] = e;
+            }
         }
         else
         {
-
+            cout << "Odpovidejte prosim ve formatu ano/ne a restartujte hru. \n";
+            exit(0);
         }
 
-        prev = i;
+        prevmax = a[arraynum];
+        prevmin = a[0];
+        mid = a[arraynum / 2];
+
+        if (prevmax == prevmin)
+        {
+            cout << "Tvoje cislo je " << prevmax;
+            exit(0);
+        }
+        else
+        {
+            continue;
+        }
     }
 
     return 0;
 }
+
+
+//vemte zdrojovı kod a zkompirujte kompilátorem za pomocí g++ program.cpp -o program
