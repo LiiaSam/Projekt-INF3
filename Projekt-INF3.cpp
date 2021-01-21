@@ -6,7 +6,6 @@ using namespace std;
 void PCGuesser()
 {
     string answer;
-    int g = 1000;
     int a[500];
     int mid = 500;
     int prevmax = 1000;
@@ -15,9 +14,9 @@ void PCGuesser()
     cout << "Vyberte si cislo a stisknete libovolne tlacitko pro pokracovani. \n";
     system("pause");
 
-    for (int i = 500; i < 1002; i = mid)
+    while (true)
     {
-        cout << "Je vase cislo vetsi nez " << i << endl;
+        cout << "Je vase cislo vetsi nez " << mid << endl;
 
         while (answer != "ano" && answer != "ne")
         {
@@ -29,7 +28,7 @@ void PCGuesser()
 
         if (answer == "ne")
         {
-            for (int e = prevmin; e < i + 1; e++)
+            for (int e = prevmin; e < mid + 1; e++)
             {
                 arraynum++;
                 a[arraynum] = e;
