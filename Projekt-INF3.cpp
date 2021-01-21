@@ -50,9 +50,11 @@ void PCG()
 
         if (prevmax == prevmin)
         {
-            cout << "Tvoje cislo je " << prevmax;
+            cout << "Tvoje cislo je " << prevmax << endl;
+            system("pause");
             exit(0);
         }
+
         answer = "";
     }
 }
@@ -61,60 +63,68 @@ void PLG()
 {
     srand(unsigned(time(0)));
     int num = rand() % 1000;
-    int guess = 0;
     int quest = 0;
+    int i = 2;
 
-    cout << "Myslim si cislo... \nNapiste cislo, se kterym chcete srovnavat. \n";
-
-    while (guess > 1000)
+    cout << "Myslim si cislo... \n";
+    
+    while (i > 1)
     {
-        cout << "Vyberte si cislo mezi 1 a 1000.";
-        cin >> guess;
-    }
+        int guess = 1001;
 
-    cout << "Vyberte si, na co se chcete zeptat: \n1 Je vase cislo vetsi nez " << guess << "? \n2 Je vase cislo mensi nez " << guess << "? \n3 Je vase cislo rovno " << guess << "? \n";
-    cin >> quest;
+        cout << "Napiste cislo, se kterym chcete srovnavat. \n";
 
-    while (quest != 1 && quest != 2 && quest != 3)
-    {
-        cout << "Napiste cislo 1 - 3, podle otazky, na ktero use chcete zeptat.";
+        while (guess > 1000)
+        {
+            cout << "Cislo musi byt mezi 1 a 1000. \n";
+            cin >> guess;
+        }
+
+        cout << "Vyberte si, na co se chcete zeptat: \n1 Je vase cislo vetsi nez " << guess << "? \n2 Je vase cislo mensi nez " << guess << "? \n3 Je vase cislo rovno " << guess << "? \n";
         cin >> quest;
-    }
 
-    switch (quest)
-    {case 1:
-        if (num > guess)
+        while (quest != 1 && quest != 2 && quest != 3)
         {
-            cout << "ano";
+            cout << "Napiste cislo 1 - 3, podle otazky, na ktero use chcete zeptat.";
+            cin >> quest;
         }
-        else
-        {
-            cout << "ne";
-        }
-        break;
-    case 2:
-        if (num < guess)
-        {
-            cout << "ano";
-        }
-        else
-        {
-            cout << "ne";
-        }
-        break;
-    case 3:
-        if (num = guess)
-        {
-            cout << "ano \nVyhrali jste hru.";
-            exit(0);
-        }
-        else
-        {
-            cout << "ne";
-        }
-        break;
-    }
 
+        switch (quest)
+        {
+        case 1:
+            if (num > guess)
+            {
+                cout << "ano\n";
+            }
+            else
+            {
+                cout << "ne\n";
+            }
+            break;
+        case 2:
+            if (num < guess)
+            {
+                cout << "ano\n";
+            }
+            else
+            {
+                cout << "ne\n";
+            }
+            break;
+        case 3:
+            if (num = guess)
+            {
+                cout << "ano \nVyhrali jste hru.";
+                exit(0);
+            }
+            else
+            {
+                cout << "ne\n";
+            }
+            break;
+        }
+
+    }
 }
 
 int main()
@@ -126,11 +136,15 @@ int main()
    
     if (answ == "robot")
     {
-        PCG();
+        PLG();
     }
     else if (answ == "clovek")
     {
-        PLG();
+        PCG();
+    }
+    else
+    {
+        cout << "Odpovidejte pouze ve formatu robot/clovek. \n";
     }
 
     return 0;
