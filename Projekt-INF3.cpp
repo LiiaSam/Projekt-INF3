@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <time.h>  
+#include <ctype.h>
 using namespace std;
 
 void PCGuesser()
@@ -69,22 +70,26 @@ void HumanGuesser()
     
     while (i > 1)
     {
-        int guess = 1001;
+        int guess = 0;
+        int question = 4;
 
         cout << "Napiste cislo, se kterym chcete srovnavat. \n";
 
-        while (guess > 1000) 
+        while (guess > 1000 || guess < 1)
         {
             cout << "Cislo musi byt mezi 1 a 1000. \n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cin >> guess;
         }
 
         cout << "Vyberte si, na co se chcete zeptat: \n1 Je vase cislo vetsi nez " << guess << "? \n2 Je vase cislo mensi nez " << guess << "? \n3 Je vase cislo rovno " << guess << "? \n";
-        cin >> question;
 
-        while (question != 1 && question != 2 && question != 3)
+        while (question > 3 || question <1)
         {
-            cout << "Napiste cislo 1 - 3, podle otazky, na kterou se chcete zeptat.";
+            cout << "Napiste cislo 1 - 3, podle otazky, na kterou se chcete zeptat. \n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cin >> question;
         }
 
